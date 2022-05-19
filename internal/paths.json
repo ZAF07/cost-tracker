@@ -1,0 +1,12 @@
+{
+  "paths": [
+    {
+      "url": "/a",
+      "handlers": "home"
+    },
+    {
+      "url": "/b",
+      "handlers": "home"
+    }
+  ]
+}

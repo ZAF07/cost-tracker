@@ -54,7 +54,7 @@ func main() {
 	r := mux.NewRouter()
 	router.InitRoutes(r)
 
-    viper.AddConfigPath("/Users/zaffere/go/src/cost-tracker/config")
+    viper.AddConfigPath("config")
     viper.SetConfigName("config")
     viper.SetConfigType("yml")
     // viper.SetConfigType("yml")

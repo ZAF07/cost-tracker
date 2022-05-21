@@ -1,0 +1,7 @@
+paths:
+  - path: home
+    url: /home
+    handler: home
+  - path: about
+    url: /about
+    handler: about

@@ -57,7 +57,7 @@ func main() {
     viper.AddConfigPath("config")
     viper.SetConfigName("config")
     viper.SetConfigType("yml")
-    // viper.SetConfigType("yml")
+		
 		s := Paths{}
     err := viper.ReadInConfig()
 		erre := viper.Unmarshal(&s)

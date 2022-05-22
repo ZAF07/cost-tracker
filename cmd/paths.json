@@ -2,11 +2,13 @@
   "paths": [
     {
       "url": "/a",
-      "handlers": "home"
+      "handlers": "home",
+      "path": "home"
     },
     {
       "url": "/b",
-      "handlers": "home"
+      "handler": "about",
+      "path": "about"
     }
   ]
 }

@@ -1,7 +1,13 @@
 paths:
   - path: home
     url: /home
+    methods: 
+      - GET
+      - PUT
     handler: home
   - path: about
     url: /about
+    methods:
+      - GET
+      - POST
     handler: about

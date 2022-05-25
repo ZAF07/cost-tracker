@@ -82,6 +82,7 @@ func main() {
 	fmt.Println("Server")
 	r := mux.NewRouter()
 
+	// THIS GOES INTO ROUTER PACKAGE
 	// THIS WOULD BE THE UNMARSHALER FOR ANY YAML CONFIG FILE
 	viper.AddConfigPath("config")
 	viper.SetConfigName("config")
@@ -110,4 +111,4 @@ func main() {
 // SET UP FIRST SERVICE
 // SET UP FIRST CONTROLLER
 // SET UP BASIC ROUTER
-//  SET UP BASIC GORILLA SERVER
+//  SET UP BASIC MUX SERVER

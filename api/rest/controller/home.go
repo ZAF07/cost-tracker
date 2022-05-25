@@ -20,7 +20,6 @@ type Response struct {
 }
 
 func (c HomeAPI) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	// fmt.Fprintf(w, "Hello %s", "ZAFFERE")
 	func(w http.ResponseWriter, r *http.Request) {
 		// Bases on method, render the relevant service module, passing the app dependencies (DB, RMQ, CACHE)
 		fmt.Println("REQUEST METHOD: ", r.Method)

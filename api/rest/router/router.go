@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/ZAF07/cost-tracker/constants"
 	"github.com/ZAF07/cost-tracker/internal/config"
 	"github.com/gorilla/mux"
 )
@@ -16,27 +15,14 @@ func InitRoutes(r *mux.Router, paths config.AppPaths) {
 	}
 
 	for _, p := range paths.Paths {
-		var GET string = ""
-		var POST string = ""
-		var PUT string = ""
-		var DELETE string = ""
-
-		// a := ""
+		methods := []string{}
 		for _, v := range p.Methods {
-			switch v.URL {
-			case constants.GET:
-				GET = v.URL
-			case constants.POST:
-				POST = v.URL
-			case constants.PUT:
-				PUT = v.URL
-			case constants.DELETE:
-				DELETE = v.URL
-			}
+			methods = append(methods, v.URL)
 		}
 		fmt.Println()
-		fmt.Printf("REGISTERING THESE METHODS FOR /%s : %s %s %s %s", p.Path, GET, POST, PUT, DELETE)
+		fmt.Printf("REGISTERING THESE METHODS FOR /%s : %v", p.Path, methods)
 		fmt.Println("")
-		r.HandleFunc(p.URL, p.Handle.ServeHTTP).Methods(GET, POST, PUT, DELETE)
+		r.HandleFunc(p.URL, p.Handle.ServeHTTP).Methods(methods...)
+		// Figure out timeout
 	}
 }

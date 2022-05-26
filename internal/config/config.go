@@ -41,13 +41,12 @@ func UnmarshalHookYAML() mapstructure.DecodeHookFuncType {
 		data interface{}, // raw data
 	) (interface{}, error) {
 		// Check if the target type matches Path{}
-		configPaths := Path{}
-		if t != reflect.TypeOf(configPaths) {
+		appPath := Path{}
+		if t != reflect.TypeOf(appPath) {
 			return data, nil
 		}
 
 		fm := reflect.ValueOf(data)
-		pa := Path{}
 
 		lo := fm.MapRange()
 		for lo.Next() {
@@ -68,20 +67,20 @@ func UnmarshalHookYAML() mapstructure.DecodeHookFuncType {
 					mtd.URL = iSlice.Index(i).Interface().(string)
 					methds = append(methds, mtd)
 				}
-				pa.Methods = methds
+				appPath.Methods = methds
 
 			}
 
 			switch lo.Key().Interface().(string) {
 			case "url":
-				pa.URL = v
+				appPath.URL = v
 			case "handler":
-				pa.Handler = v
-				pa.Handle = controller.MapControllerHandler(v)
+				appPath.Handler = v
+				appPath.Handle = controller.MapControllerHandler(v)
 			case "path":
-				pa.Path = v
+				appPath.Path = v
 			}
 		}
-		return pa, nil
+		return appPath, nil
 	}
 }
